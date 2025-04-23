@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b67c65a5042028a5",
+        "id": "b519648e4ce87aa2",
         "type": "tabs",
         "children": [
           {
-            "id": "3e031247a2333e7f",
+            "id": "c8fadb0d3eab60fa",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -179,21 +179,20 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3e031247a2333e7f",
+  "active": "c8fadb0d3eab60fa",
   "lastOpenFiles": [
+    "Welcome.md",
+    "pdfs/trouble-brewing.character-tokens.pdf",
+    "pdfs/trouble-brewing.character-list.pdf",
     "pdfs/town-square.pdf",
     "pdfs/life-tokens.pdf",
+    "Amounts.md",
     "pdfs/grimoire-tokens.base-editions.pdf",
-    "pdfs/trouble-brewing.pdf",
+    "parts/alignment_token.stl",
+    "parts/vote_token.stl",
     "pdfs",
     "New folder",
     "parts/life_token.stl",
-    "parts/reminder_token.stl",
-    "parts/shroud.stl",
-    "parts/character_token.stl",
-    "parts",
-    "Amounts.md",
-    "Welcome.md",
     "README.md",
     "obsidian-botc/README.md"
   ]
