@@ -11,10 +11,14 @@
             "id": "3e031247a2333e7f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Amounts.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Amounts"
             }
           }
         ]
@@ -177,11 +181,20 @@
   },
   "active": "3e031247a2333e7f",
   "lastOpenFiles": [
+    "pdfs/town-square.pdf",
+    "pdfs/life-tokens.pdf",
+    "pdfs/grimoire-tokens.base-editions.pdf",
+    "pdfs/trouble-brewing.pdf",
+    "pdfs",
+    "New folder",
+    "parts/life_token.stl",
+    "parts/reminder_token.stl",
+    "parts/shroud.stl",
+    "parts/character_token.stl",
+    "parts",
     "Amounts.md",
     "Welcome.md",
     "README.md",
-    "obsidian-botc/README.md",
-    "obsidian-botc",
-    "Sheets"
+    "obsidian-botc/README.md"
   ]
 }
