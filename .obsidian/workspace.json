@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Amounts.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Amounts"
+              "title": "README"
             }
           }
         ]
@@ -181,19 +181,19 @@
   },
   "active": "c8fadb0d3eab60fa",
   "lastOpenFiles": [
+    "Amounts.md",
+    "README.md",
     "Welcome.md",
     "pdfs/trouble-brewing.character-tokens.pdf",
     "pdfs/trouble-brewing.character-list.pdf",
     "pdfs/town-square.pdf",
     "pdfs/life-tokens.pdf",
-    "Amounts.md",
     "pdfs/grimoire-tokens.base-editions.pdf",
     "parts/alignment_token.stl",
     "parts/vote_token.stl",
     "pdfs",
     "New folder",
     "parts/life_token.stl",
-    "README.md",
     "obsidian-botc/README.md"
   ]
 }
