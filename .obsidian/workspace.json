@@ -4,21 +4,33 @@
     "type": "split",
     "children": [
       {
-        "id": "b519648e4ce87aa2",
+        "id": "502109751e94e426",
         "type": "tabs",
         "children": [
           {
-            "id": "c8fadb0d3eab60fa",
+            "id": "848da00877694625",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "aFile": "Assembly.md",
+                "bFile": "Assembly.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "README"
+              "icon": "diff",
+              "title": "Diff: Assembly"
+            }
+          },
+          {
+            "id": "dff4d7a25e4481c4",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "pdfs/life-tokens.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "life-tokens"
             }
           }
         ]
@@ -179,16 +191,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c8fadb0d3eab60fa",
+  "active": "848da00877694625",
   "lastOpenFiles": [
     "Amounts.md",
+    "Assembly.md",
+    "pdfs/grimoire-tokens.base-editions.pdf",
+    "pdfs/life-tokens.pdf",
+    "pdfs/town-square.pdf",
+    "pdfs/trouble-brewing.character-list.pdf",
+    "pdfs/trouble-brewing.character-tokens.pdf",
     "README.md",
     "Welcome.md",
-    "pdfs/trouble-brewing.character-tokens.pdf",
-    "pdfs/trouble-brewing.character-list.pdf",
-    "pdfs/town-square.pdf",
-    "pdfs/life-tokens.pdf",
-    "pdfs/grimoire-tokens.base-editions.pdf",
     "parts/alignment_token.stl",
     "parts/vote_token.stl",
     "pdfs",
