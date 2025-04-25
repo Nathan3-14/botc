@@ -18,10 +18,10 @@
 | [[grimoire-tokens.base-editions.pdf]]    | 2     |
 | [[trouble-brewing.character-tokens.pdf]] | 2     |
 ## Purchases
-| Link                                                                                                    | Count |
-| ------------------------------------------------------------------------------------------------------- | ----- |
-| [Self-Adhesive Felt A4](https://www.hobbycraft.co.uk/black-self-adhesive-felt-sheet-a4/5728371000.html) | 5     |
-| Some sort of Box (2 A4 sides)                                                                           | 1     |
-| Duct Tape                                                                                               | 1     |
+| Link                                                                                                                 | Count |
+| -------------------------------------------------------------------------------------------------------------------- | ----- |
+| [Self-Adhesive Felt A4](https://www.hobbycraft.co.uk/black-self-adhesive-felt-sheet-a4/5728371000.html)              | 5     |
+| Some sort of Box (from [Hobbycraft](https://www.hobbycraft.co.uk/seawhite-cardboard-storage-box-a3/6498581000.html)) | 1     |
+| Duct Tape                                                                                                            | 1     |
 
 ### [[Assembly]]
