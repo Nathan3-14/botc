@@ -179,13 +179,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "802bb767a932a17f",
+  "active": "9f4f2130c846fe5e",
   "lastOpenFiles": [
+    "pdfs/trouble-brewing.character-list.official.pdf",
+    "pdfs/Trouble Brewing script.pdf",
     "Assembly.md",
+    "pdfs/trouble-brewing.character-list.pdf",
     "Amounts.md",
     "pdfs/grimoire-tokens.base-editions.pdf",
     "pdfs/trouble-brewing.character-tokens.pdf",
-    "pdfs/trouble-brewing.character-list.pdf",
     "pdfs/life-tokens.pdf",
     "pdfs/town-square.pdf",
     "README.md",
@@ -194,7 +196,6 @@
     "parts/vote_token.stl",
     "pdfs",
     "New folder",
-    "parts/life_token.stl",
     "obsidian-botc/README.md"
   ]
 }
