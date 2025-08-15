@@ -18,7 +18,7 @@ def clear_directory(script_directory: str):
 
 def download_script_pdf(script_path: str, driver: WebDriver):
     driver.get("https://script.bloodontheclocktower.com/")
-    driver.implicitly_wait(3)
+    driver.implicitly_wait(5)
 
     file_path = driver.find_element(By.ID, "fileLoader")
     file_path.send_keys(script_path)
@@ -36,7 +36,7 @@ def download_script_pdf(script_path: str, driver: WebDriver):
         print("Error loading script, please retry (notinteractable)")
         driver.close()
         quit()
-    time.sleep(2)
+    time.sleep(5)
     driver.close()
     print("New Script Downloaded")
 
