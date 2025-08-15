@@ -11,9 +11,9 @@ def check(script_name: str) -> bool:
         print(f"File '{current_script_path}' does not exist")
         quit()
     
-    character_check_list = json.load(open("tools/characters.json", "r"))
-    travellers_list = json.load(open("tools/travellers.json", "r"))
-    fabled_list = json.load(open("tools/fabled.json", "r"))
+    character_check_list = json.load(open("tools/data/characters.json", "r"))
+    travellers_list = json.load(open("tools/data/travellers.json", "r"))
+    fabled_list = json.load(open("tools/data/fabled.json", "r"))
     
     valid = True
     for character in script:
