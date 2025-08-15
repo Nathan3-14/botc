@@ -8,9 +8,7 @@ from selenium.common.exceptions import ElementNotInteractableException, NoSuchEl
 import os
 from sys import argv
 import json
-
-def join_path(path: str, *paths: str):
-    return os.path.normpath(os.path.join(path, *paths))
+from .common import join_path, SCRIPTS_PATH, CURRENT_PATH
 
 def clear_directory(script_directory: str):
     for file in os.listdir(script_directory):
@@ -49,12 +47,7 @@ def get_meta_index(script_data: List[Dict[str, str]]) -> int:
     return -1
 
 def fix_script(script_name: str):
-    global current_path
-    global scripts_path
-    if script_name.endswith(".json"):
-        script_path = join_path(current_path, script_name)
-    else:
-        script_path = join_path(scripts_path, script_name, f"{script_name}.json")
+    script_path = join_path(SCRIPTS_PATH, script_name, f"{script_name}.json")
     script_data = json.load(open(script_path, "r"))
     meta_index = get_meta_index(script_data)
     if meta_index == -1:
@@ -72,25 +65,15 @@ def rename_script(script_path: str):
     os.rename(old_pdf_path, new_pdf_path)
     print("New Script Renamed")
     
-    
-
-if __name__ == "__main__":
-    current_path = os.getcwd()
-    scripts_path = os.path.join(current_path, "scripts")
-
-    args = argv[1:]
-    if len(args) != 1:
-        print("Invalid args")
-        quit()
-    
-    current_script_directory = os.path.join(scripts_path, args[0])
-    current_script_file = f"{args[0]}{"" if args[0].endswith(".json") else ".json"}"
+def format(script_name: str):
+    current_script_directory = os.path.join(SCRIPTS_PATH, script_name)
+    current_script_file = f"{script_name}.json"
     current_script_path = os.path.join(current_script_directory, current_script_file)
     if not os.path.exists(current_script_path):
         print(f"File '{current_script_path}' does not exist")
         quit()
     
-    fix_script(args[0])
+    fix_script(script_name)
     clear_directory(current_script_directory)
     
     options = Options()
@@ -101,4 +84,11 @@ if __name__ == "__main__":
     download_script_pdf(current_script_path, webdriver.Firefox(options=options))
     rename_script(current_script_path)
 
-
+    
+if __name__ == "__main__":
+    args = argv[1:]
+    if len(args) != 1:
+        print("Invalid args")
+        quit()
+    
+    format(args[0])
