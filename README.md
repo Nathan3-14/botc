@@ -5,9 +5,9 @@
 - 1 x [TB Characters](./pdfs/TB_character_tokens.pdf)
 - 1 x [BMR Characters](./pdfs/BMR_character_tokens.pdf)
 - 1 x [SAV Characters](./pdfs/SAV_character_tokens.pdf)
-- Any (7 recommended) x [TB Script (new)](./scripts/trouble_brewing/trouble_brewing.pdf) or [TB Script old](./pdfs/TB_character_list_DEPRECATED.pdf)
-- Any (7 recommended) x [BMR Script (new)](./scripts/bad_moon_rising/bad_moon_rising.pdf) or [TB Script old](./pdfs/BMR_character_list_DEPRECATED.pdf)
-- Any (7 recommended) x [SAV Script (new)](./scripts/sects_and_violets/sects_and_violets.pdf) or [TB Script old](./pdfs/SAV_character_list_DEPRECATED.pdf)
+- Any (7 recommended) x [TB Script (new)](./scripts/trouble_brewing/trouble_brewing.pdf) or [TB Script (old)](./pdfs/TB_character_list_DEPRECATED.pdf)
+- Any (7 recommended) x [BMR Script (new)](./scripts/bad_moon_rising/bad_moon_rising.pdf) or [TB Script (old)](./pdfs/BMR_character_list_DEPRECATED.pdf)
+- Any (7 recommended) x [SAV Script (new)](./scripts/sects_and_violets/sects_and_violets.pdf) or [TB Script (old)](./pdfs/SAV_character_list_DEPRECATED.pdf)
 
 ## Tools Usage
 To use [script_tools.py](./script_tools.py), run it with the following `python <new|format|check> <script.json|script_name|script_name>`<br>
