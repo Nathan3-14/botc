@@ -19,5 +19,5 @@ Creates the script pdf.
 Checks to see if the script is usable.
 
 ## Credits
-All files pulled from [TJHowse's Github](https://github.com/tjhowse/botc)
+All files pulled from [TJHowse's Github](https://github.com/tjhowse/botc)<br>
 Scripts pulled from [www.botcscripts.com](https://www.botcscripts.com/) and formatted with the [Offical Script Tool](https://script.bloodontheclocktower.com/)
