@@ -10,7 +10,9 @@
 - Any (7 recommended) x [SAV Script (new)](./scripts/sects_and_violets/sects_and_violets.pdf) or [TB Script (old)](./pdfs/SAV_character_list_DEPRECATED.pdf)
 
 ## Tools Usage
-To use [script_tools.py](./script_tools.py), run it with the following `python <new|format|check> <script.json|script_name|script_name>`<br>
+To use [script_tools.py](./script_tools.py), run it with the following `python <download|new|format|check> <search_term|script.json|script_name|script_name>`<br>
+### Download
+Downloads the script closed matching the search term and treats it as a new script (term can be in quotes if multi-word ie. "trouble brewing")
 ### New
 New creates a folder within the scripts directory, moves the script, checks it and formats it if it passes the check.
 ### Format
