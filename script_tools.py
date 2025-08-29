@@ -1,15 +1,14 @@
 import json
 import os
 from pprint import pprint
-
 import requests
-from tools import check, format, join_path
+from tools import check, format, join_path, search
 from tools.common import SCRIPTS_PATH, CURRENT_PATH
 from sys import argv
 
 if __name__ == "__main__":
     args = argv[1:]
-    if len(args) != 2:
+    if (len(args) != 2) and args[0] != "search":
         print("Invalid args provided")
         quit()
     
@@ -58,6 +57,10 @@ if __name__ == "__main__":
             check(args[1])
         case "format":
             format(args[1])
+        case "search":
+            includes = [item for item in args[1:] if not item.startswith("!")]
+            excludes = [item[1:] for item in args[1:] if item.startswith("!")]
+            print("\n".join(search(includes=includes, excludes=excludes)))
         case _:
             print(f"Invalid option '{args[0]}', expected 'new', 'check' or 'format'")
             quit()
