@@ -62,7 +62,7 @@ if __name__ == "__main__":
             excludes = [item[1:] for item in args[1:] if item.startswith("!")]
             print("\n".join([f"./scripts/{script_name}/{script_name}.pdf" for script_name in search(includes=includes, excludes=excludes)]))
         case _:
-            print(f"Invalid option '{args[0]}', expected 'new', 'check' or 'format'")
+            print(f"Invalid option '{args[0]}', expected 'new', 'check', 'search' or 'format'")
             quit()
     
     

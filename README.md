@@ -10,7 +10,7 @@
 - Any (7 recommended) x [SAV Script (new)](./scripts/sects_and_violets/sects_and_violets.pdf) or [TB Script (old)](./pdfs/SAV_character_list_DEPRECATED.pdf)
 
 ## Tools Usage
-To use [script_tools.py](./script_tools.py), run it with the following `python <download|new|format|check> <search_term|script.json|script_name|script_name>`<br>
+To use [script_tools.py](./script_tools.py), run it with the following `python <download|new|format|check> <search_term|script.json|script_name|script_name>` or `python search [include]... ![exclude]...`<br>
 ### Download
 Downloads the script closed matching the search term and treats it as a new script (term can be in quotes if multi-word ie. "trouble brewing")
 ### New
@@ -19,7 +19,8 @@ New creates a folder within the scripts directory, moves the script, checks it a
 Creates the script pdf.
 ### Check
 Checks to see if the script is usable.
-
+### Search
+Searches downloaded scripts for ones that match the provided options
 ## Credits
 All files pulled from [TJHowse's Github](https://github.com/tjhowse/botc)<br>
 Scripts pulled from [www.botcscripts.com](https://www.botcscripts.com/) and formatted with the [Offical Script Tool](https://script.bloodontheclocktower.com/)
