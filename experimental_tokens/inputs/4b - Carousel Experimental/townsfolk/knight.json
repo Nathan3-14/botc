@@ -1,0 +1,11 @@
+{
+  "name": "Knight",
+  "ability": "You start knowing 2 players that are not the Demon.",
+  "type": "townsfolk",
+  "icon": "Knight.png",
+  "first_night": true,
+  "other_nights": false,
+  "reminders": ["KNOW", "KNOW"],
+  "affects_setup": false,
+  "home_script": "4b - Carousel Experimental"
+}

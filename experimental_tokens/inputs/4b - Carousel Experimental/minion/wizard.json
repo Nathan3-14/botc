@@ -1,0 +1,11 @@
+{
+  "name": "Wizard",
+  "ability": "Once per game, choose to make a wish. If granted, it might have a price & leave a clue as to its nature.",
+  "type": "minion",
+  "icon": "Wizard.png",
+  "first_night": true,
+  "other_nights": true,
+  "reminders": ["USED"],
+  "affects_setup": false,
+  "home_script": "4b - Carousel Experimental"
+}

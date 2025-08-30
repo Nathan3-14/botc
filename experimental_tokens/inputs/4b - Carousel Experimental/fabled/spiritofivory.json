@@ -1,0 +1,11 @@
+{
+  "name": "Spirit of Ivory",
+  "ability": "There can't be more than 1 extra evil player.",
+  "type": "fabled",
+  "icon": "Spirit_of_Ivory.png",
+  "first_night": false,
+  "other_nights": false,
+  "reminders": [],
+  "affects_setup": false,
+  "home_script": "Extras"
+}
