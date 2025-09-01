@@ -8,7 +8,7 @@ from sys import argv
 
 if __name__ == "__main__":
     args = argv[1:]
-    if (len(args) != 2) and args[0] != "search":
+    if len(args) < 2:
         print("Invalid args provided")
         quit()
     
@@ -50,8 +50,9 @@ if __name__ == "__main__":
                     quit()
                 os.remove(new_script_path)
             os.rename(join_path(CURRENT_PATH, args[1]), new_script_path)
-            if not check(current_script_name):
-                quit()
+            if "-i" not in args:
+                if not check(current_script_name):
+                    quit()
             format(current_script_name)
         case "check":
             check(args[1])

@@ -16,9 +16,10 @@
 - Any (7 recommended) x any script from [Scripts](./scripts/)
 
 ## Tools Usage
-To use [script_tools.py](./script_tools.py), run it with the following `python <download|new|format|check> <search_term|script.json|script_name|script_name>` or `python search [include]... ![exclude]...`<br>
+To use [script_tools.py](./script_tools.py), run it with the following `python <download|new|format|check> <search_term|script.json|script_name|script_name> [flags]` or `python search [include]... ![exclude]...`<br>
 ### Download
-Downloads the script closed matching the search term and treats it as a new script (term can be in quotes if multi-word ie. "trouble brewing")
+Downloads the script closed matching the search term and treats it as a new script (term can be in quotes if multi-word ie. "trouble brewing")<br>
+Using the `-i` flag ignores the checking step of the download process.
 ### New
 New creates a folder within the scripts directory, moves the script, checks it and formats it if it passes the check.
 ### Format
