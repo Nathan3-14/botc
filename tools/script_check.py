@@ -17,7 +17,7 @@ def check(script_name: str) -> bool:
     
     valid = True
     for character in script:
-        id = character["id"]
+        id = character if type(character) == str else character["id"]
         if id == "_meta":
             continue
         if id not in character_check_list and id not in travellers_list and id not in fabled_list:
