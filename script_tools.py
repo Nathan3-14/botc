@@ -38,6 +38,7 @@ if __name__ == "__main__":
             if not os.path.exists(args[1]):
                 print(f"File '{args[1]}' doesn't exist")
                 quit()
+            
             current_script_file = args[1]
             current_script_name = ".".join(current_script_file.split(".")[:-1]).strip("./\\")
             current_script_path = join_path(SCRIPTS_PATH, current_script_name)
