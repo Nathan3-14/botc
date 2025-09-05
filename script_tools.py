@@ -2,7 +2,7 @@ import json
 import os
 from pprint import pprint
 import requests
-from tools import check, format, join_path, search
+from tools import check, format, join_path, search, list_script
 from tools.common import SCRIPTS_PATH, CURRENT_PATH
 from sys import argv
 
@@ -63,8 +63,10 @@ if __name__ == "__main__":
             includes = [item for item in args[1:] if not item.startswith("!")]
             excludes = [item[1:] for item in args[1:] if item.startswith("!")]
             print("\n".join([f"./scripts/{script_name}/{script_name}.pdf" for script_name in search(includes=includes, excludes=excludes)]))
+        case "list":
+            list_script(args[1])
         case _:
-            print(f"Invalid option '{args[0]}', expected 'new', 'check', 'search' or 'format'")
+            print(f"Invalid option '{args[0]}', expected 'new', 'check', 'search', 'list' or 'format'")
             quit()
     
     
