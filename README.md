@@ -16,18 +16,21 @@
 - Any (7 recommended) x any script from [Scripts](./scripts/)
 
 ## Tools Usage
-To use [script_tools.py](./script_tools.py), run it with the following `python <download|new|format|check> <search_term|script.json|script_name|script_name> [flags]` or `python search [include]... ![exclude]...`<br>
+To use [script_tools.py](./script_tools.py), run it with the following `python <download|new|format|check|list> <search_term|script.json|script_name|script_name|script_nane> [flags]` or `python search [include]... ![exclude]...`<br>
 ### Download
 Downloads the script closed matching the search term and treats it as a new script (term can be in quotes if multi-word ie. "trouble brewing")<br>
 Using the `-i` flag ignores the checking step of the download process.
 ### New
 New creates a folder within the scripts directory, moves the script, checks it and formats it if it passes the check.
+Using the `-i` flag ignores the checking step of this process.
 ### Format
 Creates the script pdf.
 ### Check
 Checks to see if the script is usable.
 ### Search
-Searches downloaded scripts for ones that match the provided options
+Searches downloaded scripts for ones that best match the provided options
+### List
+Displays a script
 ## Credits
 All files pulled from [TJHowse's Github](https://github.com/tjhowse/botc)<br>
 Scripts pulled from [www.botcscripts.com](https://www.botcscripts.com/) and formatted with the [Offical Script Tool](https://script.bloodontheclocktower.com/)
