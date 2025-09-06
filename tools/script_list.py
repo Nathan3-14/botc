@@ -36,6 +36,6 @@ def list_script(script_name: str):
             outputs[character_data[id]].append(id)
     # console.print(outputs)
     for character_type, character_list in outputs.items():
-        console.print(f"\n{"-"*20}\n[{colours[character_type]} bold]{character_type.capitalize()}[/{colours[character_type]} bold]")
+        console.print(f"{"-"*20}\n[{colours[character_type]} bold]{character_type.capitalize()}[/{colours[character_type]} bold]")
         for character in character_list:
             console.print(f"[{colours[character_type]}]- {character}[/{colours[character_type]}]")
