@@ -8,7 +8,9 @@ colours = {
     "townsfolk": "#005fd7",
     "outsider": "#00afaf",
     "minion": "#ff8700",
-    "demon": "#cb0e0e"
+    "demon": "#cb0e0e",
+    "travellers": "#d7afff",
+    "fabled": "#ffff5f"
 }
 
 def list_script(script_name: str):
@@ -21,21 +23,35 @@ def list_script(script_name: str):
         print(f"File '{current_script_path}' does not exist")
         quit()
     character_data = json.load(open("tools/data/characters.json", "r"))
+    fabled_list = json.load(open("tools/data/fabled.json", "r"))
+    travellers_list = json.load(open("tools/data/travellers.json", "r"))
     
     outputs: Dict[str, List[str]] = {
         "townsfolk": [],
         "outsider": [],
         "minion": [],
-        "demon": []
+        "demon": [],
+        "fabled": [],
+        "travellers": []
     }
     for character in script:
         if type(character) == dict:
             id = character["id"]
             if id == "_meta":
-                continue  
-            outputs[character_data[id]].append(id)
-    # console.print(outputs)
+                continue
+            if id in travellers_list:
+                outputs["travellers"].append(id)
+            elif id in fabled_list:
+                outputs["fabled"].append(id)
+            elif id in character_data.keys():
+                outputs[character_data[id]].append(id)
+            else:
+                print(f"Invalid character '{id}'")
+                quit()
+    
     for character_type, character_list in outputs.items():
+        if len(character_list) == 0:
+            continue
         console.print(f"{"-"*20}\n[{colours[character_type]} bold]{character_type.capitalize()}[/{colours[character_type]} bold]")
         for character in character_list:
             console.print(f"[{colours[character_type]}]- {character}[/{colours[character_type]}]")
