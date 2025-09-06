@@ -28,7 +28,8 @@ Creates the script pdf.
 ### Check
 Checks to see if the script is usable.
 ### Search
-Searches downloaded scripts for ones that best match the provided options
+Searches downloaded scripts for ones that best match the provided options<br>
+| can be used between two options to act as an or operator (may need entire option in quotes)
 ### List
 Displays a script
 ## Credits

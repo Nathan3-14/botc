@@ -8,13 +8,14 @@ from selenium.common.exceptions import ElementNotInteractableException, NoSuchEl
 import os
 from sys import argv
 import json
-from .common import join_path, SCRIPTS_PATH, CURRENT_PATH
+from .common import join_path, SCRIPTS_PATH, console, error
+from .colours import log_grey, success_green
 
 def clear_directory(script_directory: str):
     for file in os.listdir(script_directory):
         if file.endswith(".pdf"):
             os.remove(join_path(script_directory, file))
-    print("Old PDFs Removed")
+    console.print(f"[{log_grey}]Old PDFs Removed")
 
 def download_script_pdf(script_path: str, driver: WebDriver):
     driver.get("https://script.bloodontheclocktower.com/")
@@ -26,19 +27,19 @@ def download_script_pdf(script_path: str, driver: WebDriver):
         download_button = driver.find_element(By.CLASS_NAME, "gfSvZh")
         download_button.click()
     except NoSuchElementException:
-        print("Error loading script, please retry (nosuchelement)")
+        error("Error loading script, please retry (nosuchelement)", _quit=False)
         driver.close()
         quit()
     try:
         download_a4_pdf_button = driver.find_elements(By.CSS_SELECTOR, ".sc-ckVGcZ.hfoJqb")[5]
         download_a4_pdf_button.click()
     except ElementNotInteractableException:
-        print("Error loading script, please retry (notinteractable)")
+        error("Error loading script, please retry (notinteractable)", _quit=False)
         driver.close()
         quit()
     time.sleep(5)
     driver.close()
-    print("New Script Downloaded")
+    console.print(f"[{log_grey}]New Script Downloaded[/{log_grey}]")
 
 def get_meta_index(script_data: List[Dict[str, str]]) -> int:
     for index, item in enumerate(script_data):
@@ -55,7 +56,7 @@ def fix_script(script_name: str):
     else:
         script_data[meta_index]["name"] = script_data[meta_index]["name"].lower().replace("_", " ")
     json.dump(script_data, open(script_path, "w"))
-    print("Script Fixed")
+    console.print(f"[{log_grey}]Script Fixed[/{log_grey}]")
 
 def rename_script(script_path: str):
     script_directory = join_path(script_path, "..")
@@ -63,15 +64,14 @@ def rename_script(script_path: str):
     old_pdf_path = join_path(script_directory, old_pdf_name)
     new_pdf_path = join_path(script_directory, old_pdf_name.replace(" ", "_"))
     os.rename(old_pdf_path, new_pdf_path)
-    print("New Script Renamed")
+    console.print(f"[{log_grey}]New Script Renamed[/{log_grey}]")
     
 def format(script_name: str):
     current_script_directory = os.path.join(SCRIPTS_PATH, script_name)
     current_script_file = f"{script_name}.json"
     current_script_path = os.path.join(current_script_directory, current_script_file)
     if not os.path.exists(current_script_path):
-        print(f"File '{current_script_path}' does not exist")
-        quit()
+        error(f"File '{current_script_path}' does not exist")
     
     fix_script(script_name)
     clear_directory(current_script_directory)
@@ -83,12 +83,13 @@ def format(script_name: str):
     
     download_script_pdf(current_script_path, webdriver.Firefox(options=options))
     rename_script(current_script_path)
+    console.print(f"[{success_green}]Script Formatted[/{success_green}]")
 
     
 if __name__ == "__main__":
     args = argv[1:]
     if len(args) != 1:
-        print("Invalid args")
+        console.print("Invalid args")
         quit()
     
     format(args[0])

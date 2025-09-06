@@ -16,10 +16,14 @@ def search(includes: List[str]=[], excludes: List[str]=[]) -> List[str]:
         else:
             character_ids = [item["id"] for item in raw_data if item["id"] != "_meta"] #type:ignore
             
-        for include_id in includes:
-            is_invalid = (include_id not in character_ids) or is_invalid
-        for exclude_id in excludes:
-            is_invalid = (exclude_id in character_ids) or is_invalid
+        for include in includes:
+            at_least_one_is_in = False
+            for include_id in include.split("|"):
+                at_least_one_is_in = (include_id in character_ids) or at_least_one_is_in
+            is_invalid = (not at_least_one_is_in) or is_invalid
+        for exclude in excludes:
+            for exclude_id in exclude.split("|"):
+                is_invalid = (exclude_id in character_ids) or is_invalid
         if is_invalid:
             continue
         valid_scripts.append(script_folder)
