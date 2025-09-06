@@ -20,9 +20,9 @@ def list_script(script_name: str, character_types: List[Literal["townsfolk", "ou
     except FileNotFoundError:
         console.print(f"File '{current_script_path}' does not exist")
         quit()
-    character_data = json.load(open("tools/data/characters.json", "r")) | json.load(open("tools/data/new_characters.json"))
-    fabled_list = json.load(open("tools/data/fabled.json", "r"))
-    travellers_list = json.load(open("tools/data/travellers.json", "r"))
+    character_data = json.load(open("old_tools/data/characters.json", "r")) | json.load(open("old_tools/data/new_characters.json"))
+    fabled_list = json.load(open("old_tools/data/fabled.json", "r"))
+    travellers_list = json.load(open("old_tools/data/travellers.json", "r"))
     
     outputs: Dict[str, List[str]] = {
         "townsfolk": [],
