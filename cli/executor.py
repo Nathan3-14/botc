@@ -1,4 +1,4 @@
-from typing import Any, Callable, Dict
+from typing import Any, Callable, Dict, List
 from .help import Help
 from .common import console
 
@@ -12,4 +12,7 @@ class Executor:
         command_name = input_split[0]
         command_args = input_split[1:] if len(input_split) > 1 else []
         self.command_dict[self.help.get_root_command(command_name)](*self.help.convert_types(command_name, command_args))
+    
+    def run_from_command_line(self, args: List[str]) -> None:
+        self.run(" ".join(args))
         
