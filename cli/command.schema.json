@@ -4,8 +4,9 @@
     "title": "Command",
     "description": "A command",
     "type": "object",
+    "properties": {"$schema": {"type": "string"}},
     "patternProperties": {
-        "[a-zA-Z_]+": {
+        "^[a-zA-Z_]+$": {
             "type": "object",
             "properties": {
                 "args": {
@@ -16,7 +17,8 @@
                             "properties": {
                                 "type": {"type": "string"},
                                 "required": {"type": "boolean"}
-                            }
+                            },
+                            "required": ["type", "required"]
                         }
                     }
                 },
@@ -26,9 +28,10 @@
                     "type": "array",
                     "items": {"type": "string"}
                 }
-            }
+            },
+            "required": ["args", "description_short"]
         }
     },
-    "required": ["args", "description_short"],
+    "required": ["$schema"],
     "additionalProperties": false
 }
