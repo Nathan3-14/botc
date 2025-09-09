@@ -1,4 +1,3 @@
-import os
 from rich.console import Console
 from .colours import error_red
 
