@@ -32,11 +32,20 @@
     "hello": {
         "args": {
             "name": {
-                "type": "string",
+                "type": "multiple:string",
                 "required": false
             }
         },
         "description_short": "Says Hello!",
         "aliases": ["hi"]
+    },
+    "sum": {
+        "args": {
+            "numbers": {
+                "type": "multiple:int",
+                "required": true
+            }
+        },
+        "description_short": "Adds numbers together"
     }
 }

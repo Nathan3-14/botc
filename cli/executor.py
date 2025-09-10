@@ -7,12 +7,12 @@ class Executor:
         self.help = Help(help_dict)
         self.command_dict = command_dict | {"help": self.help.get_help}
     
-    def run(self, _input: str) -> None:
-        input_split = _input.split(" ")
-        command_name = input_split[0]
-        command_args = input_split[1:] if len(input_split) > 1 else []
+    def run(self, command_name: str, command_args: List[str]) -> None:
         self.command_dict[self.help.get_root_command(command_name)](*self.help.convert_types(command_name, command_args))
     
     def run_from_command_line(self, args: List[str]) -> None:
-        self.run(" ".join(args))
+        if args[0].endswith(".py"):
+            self.run(args[1], args[2:])
+        else:
+            self.run(args[0], args[1:])
         

@@ -5,14 +5,6 @@ import jsonschema
 from rich.console import Console
 console = Console()
 
-def get_display_args(args: Dict[str, Dict[str, str|bool]], extra_details:bool=True) -> List[str]:
-        display_args = []
-        for arg_name, arg_details in args.items():
-            if arg_details["required"]:
-                display_args.append(f"<{arg_name}{f":{arg_details["type"]}" if extra_details else ""}>")
-            else:
-                display_args.append(f"\\[{arg_name}{f":{arg_details["type"]}" if extra_details else ""}]")
-        return display_args
     
 
 class Help:
@@ -52,21 +44,43 @@ class Help:
                             # quit()
                         self.aliases[alias] = command
 
+    def get_type(self, type_string: str) -> type:
+        match type_string:
+            case "string": return str
+            case "int": return int
+            case "bool": return bool
+            case _: error(f"Invalid type provided '{type_string}'")
+        return str #? never reached
+
     def convert_types(self, command_name: str, args: List[Any]) -> List[Any]:
         command_args = self.get_help_details(command_name)["args"]
         new_args = []
+        console.log(f"Args: {args}")
         for index, arg in enumerate(args):
-            new_type = str
-            match command_args[list(command_args.keys())[index]]["type"]:
-                case "string": new_type = str
-                case "int": new_type = int #type:ignore
-                case "bool": new_type = bool #type:ignore
+            console.log(f"Converting {arg} at {index}")
             try:
-                new_args.append(new_type(arg))
-            except TypeError:
-                error(f"Cannot convert '{arg}' to required type '{new_type.__name__}'") #type:ignore
+                type_string = command_args[list(command_args.keys())[index]]["type"]
             except IndexError:
-                error(f"Too few arguments provided, expected {len(command_args)} but recieved {len(args)}")
+                error(f"Too many arguments provided, expected {index} reveived {len(args)}")
+                quit() #? never actually reached
+            if type_string.startswith("multiple:"):
+                new_type = self.get_type(type_string[9:])
+                new_multiple = []
+                for inner_arg in args[index:]:
+                    try:
+                        new_multiple.append(new_type(inner_arg))
+                    except TypeError:
+                        error(f"Cannot convert '{inner_arg}' to required type '{new_type.__name__}'") #type:ignore
+                new_args.append(new_multiple)
+                break
+            else:
+                new_type = self.get_type(type_string)
+                try:
+                    new_args.append(new_type(arg))
+                except TypeError:
+                    error(f"Cannot convert '{arg}' to required type '{new_type.__name__}'") #type:ignore
+                except IndexError:
+                    error(f"Too few arguments provided, expected {len(command_args)} but recieved {len(args)}")
         return new_args
 
     def get_root_command(self, command_name: str) -> str:
@@ -80,10 +94,19 @@ class Help:
     def get_help_details(self, command_name: str) -> Dict:
         return self.help_dict[self.get_root_command(command_name)]
 
+    def get_display_args(self, args: Dict[str, Dict[str, str|bool]], extra_details:bool=True) -> List[str]:
+        display_args = []
+        for arg_name, arg_details in args.items():
+            if arg_details["required"]:
+                display_args.append(f"<{arg_name}{f":{arg_details["type"].split(":")[-1]}" if extra_details else ""}>{"..." if arg_details["type"].startswith("multiple:") else ""}") #type:ignore
+            else:
+                display_args.append(f"\\[{arg_name}{f":{arg_details["type"].split(":")[-1]}" if extra_details else ""}]{"..." if arg_details["type"].startswith("multiple:") else ""}") #type:ignore
+        return display_args
+
     def get_help(self, command_name: str="") -> None:
         if command_name == "":
             for command_name, command_details in self.help_dict.items():
-                display_args = get_display_args(command_details["args"], extra_details=False)
+                display_args = self.get_display_args(command_details["args"], extra_details=False)
                 console.print(f"[dark_cyan]{command_name} {" ".join(display_args)}{" " if len(display_args) != 0 else ""}[/dark_cyan]- {command_details["description_short"]}", highlight=False)
         else:
             if command_name not in self.help_dict.keys():
@@ -95,7 +118,7 @@ class Help:
                     command_name = self.aliases[command_name]
 
             command_details = self.get_help_details(command_name)
-            display_args = get_display_args(command_details["args"])
+            display_args = self.get_display_args(command_details["args"])
             console.print(command_name)
             console.print(f"Usage: [dark_cyan]{command_name} {" ".join(display_args)}{" " if len(display_args) != 0 else ""}[/dark_cyan]", highlight=False)
             console.print(f"Description: {command_details["description" if "description" in command_details.keys() else "description_short"]}", highlight=False)
