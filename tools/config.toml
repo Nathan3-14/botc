@@ -1,0 +1,11 @@
+[character_colours]
+"townsfolk" = "#005fd7"
+"outsider" = "#00afaf"
+"minion" = "#ff8700"
+"demon" = "#cb0e0e"
+"travellers" = "#d7afff"
+"fabled" = "#ffff5f"
+[colours]
+error_red = "red"
+success_green = "#008700"
+log_grey = "bright_black"

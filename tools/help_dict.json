@@ -1,0 +1,52 @@
+{
+    "$schema": "../cli/command.schema.json",
+    "search": {
+        "args": {
+            "criteria": {
+                "type": "multiple:string",
+                "required": true
+            }
+        },
+        "description_short": "Searches downloaded scripts for a set of criteria"
+    },
+    "list": {
+        "args": {
+            "script_name": {
+                "type": "string",
+                "required": true
+            },
+            "character_types": {
+                "type": "multiple:string",
+                "required": false
+            } 
+        },
+        "description_short": "Lists the characters of script that match the character types given (if provided)"
+    },
+    "format": {
+        "args": {
+            "script_name": {
+                "type": "string",
+                "required": true
+            }
+        },
+        "description_short": "Creates a pdf of the given script"
+    },
+    "check": {
+        "args": {
+            "script_name": {
+                "type": "string",
+                "required": true
+            }
+        },
+        "description_short": "Checks if a script is compatable with currently available character"
+    },
+    "download": {
+        "args": {
+            "script_name": {
+                "type": "string",
+                "required": true
+            }
+        },
+        "description_short": "Downloads a script with the given name"
+    }
+}
