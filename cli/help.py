@@ -13,7 +13,6 @@ class Help:
             jsonschema.validate(help_dict, json.load(open("cli/command.schema.json", "r")))
         except jsonschema.ValidationError:
             error(f"Provided dict is not valid")
-            ...
         self.help_dict = help_dict | {
             "help": {
                 "args": {
@@ -40,8 +39,6 @@ class Help:
                     for alias in command_aliases:
                         if alias in self.aliases.keys():
                             error(f"Invalid alias '{alias}', already exists")
-                            # print("bad alias")
-                            # quit()
                         self.aliases[alias] = command
 
     def get_type(self, type_string: str) -> type:
@@ -50,14 +47,12 @@ class Help:
             case "int": return int
             case "bool": return bool
             case _: error(f"Invalid type provided '{type_string}'")
-        return str #? never reached
+        return str #? never actually reached
 
     def convert_types(self, command_name: str, args: List[Any]) -> List[Any]:
         command_args = self.get_help_details(command_name)["args"]
         new_args = []
-        console.log(f"Args: {args}")
         for index, arg in enumerate(args):
-            console.log(f"Converting {arg} at {index}")
             try:
                 type_string = command_args[list(command_args.keys())[index]]["type"]
             except IndexError:
@@ -89,7 +84,7 @@ class Help:
         if command_name in self.commands:
             return command_name
         error(f"Invalid command '{command_name}'")
-        return "" #? Never reached, only used to stop errors
+        return "" #? never actually reached
 
     def get_help_details(self, command_name: str) -> Dict:
         return self.help_dict[self.get_root_command(command_name)]
@@ -112,8 +107,6 @@ class Help:
             if command_name not in self.help_dict.keys():
                 if command_name not in self.aliases.keys():
                     error(f"No command with name '{command_name}', run 'help' for help")
-                    # print(f"no command called '{command_name}'")
-                    # quit()
                 else:
                     command_name = self.aliases[command_name]
 

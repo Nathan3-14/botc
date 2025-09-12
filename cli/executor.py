@@ -11,6 +11,9 @@ class Executor:
         self.command_dict[self.help.get_root_command(command_name)](*self.help.convert_types(command_name, command_args))
     
     def run_from_command_line(self, args: List[str]) -> None:
+        """
+        Can just be run as run_from_command_line(sys.argv)
+        """
         if args[0].endswith(".py"):
             self.run(args[1], args[2:])
         else:
