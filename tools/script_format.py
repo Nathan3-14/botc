@@ -1,5 +1,5 @@
 import time
-from typing import Dict, List, LiteralString
+from typing import Dict, List
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By

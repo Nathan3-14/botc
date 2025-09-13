@@ -1,8 +1,13 @@
 import os
 from re import S
-from typing import Dict
+from typing import Any, Dict
 from rich.console import Console
 import tomllib
+
+class ConfigObject:
+    def __init__(self, _dict: Dict[str, str]) -> None:
+        for key, value in _dict.items():
+            exec(f"self.{key} = {value}")
 
 class Config:
     def __init__(self, config_dict: Dict[str, Dict[str, str]]) -> None:

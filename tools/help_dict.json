@@ -45,8 +45,26 @@
             "script_name": {
                 "type": "string",
                 "required": true
+            },
+            "-i": {
+                "type": "flag",
+                "required": false
             }
         },
         "description_short": "Downloads a script with the given name"
+    },
+    "upload": {
+        "args": {
+            "script_file": {
+                "type": "string",
+                "required": true
+            },
+            "-i": {
+                "type": "flag",
+                "required": false
+            }
+        },
+        "description_short": "Uploads, checks and formats a script.json file",
+        "description": "Uploads, checks (only if -i flag is not present) and formats a script.json file"
     }
 }

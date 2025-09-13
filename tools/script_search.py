@@ -6,7 +6,7 @@ from .common import SCRIPTS_PATH, join_path, console
 def display_search(criteria: List[str]) -> None:
     includes = [item for item in criteria if not item.startswith("!")]
     excludes = [item[1:] for item in criteria if item.startswith("!")]
-    print("\n".join(search(includes, excludes)))
+    console.print("\n".join(search(includes, excludes)))
 
 def search(includes: List[str]=[], excludes: List[str]=[]) -> List[str]:
     valid_script_folders = []

@@ -11,7 +11,7 @@ executor = cli.Executor(json.load(open("tools/help_dict.json", "r")), {
     "list": tools.list_script,
     "format": tools.format,
     "check": tools.check,
-    "download": tools.download
+    "download": tools.download,
+    "upload": tools.upload
 })
-print(argv[1:])
 executor.run_from_command_line(argv[1:])
