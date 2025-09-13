@@ -62,7 +62,11 @@ def fix_script(script_name: str):
 
 def rename_script(script_path: str):
     script_directory = join_path(script_path, "..")
-    old_pdf_name = [file for file in os.listdir(script_directory) if file.endswith(".pdf")][0]
+    try:
+        old_pdf_name = [file for file in os.listdir(script_directory) if file.endswith(".pdf")][0]
+    except IndexError:
+        error(f"PDF did not download correctly, please try again")
+        quit() #? never actually reached
     old_pdf_path = join_path(script_directory, old_pdf_name)
     new_pdf_path = join_path(script_directory, format_name(old_pdf_name))
     os.rename(old_pdf_path, new_pdf_path)
