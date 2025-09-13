@@ -1,5 +1,7 @@
 import json
 from typing import Any, Dict, List
+
+from numpy import uint
 from .common import console, error
 import jsonschema
 from rich.console import Console
@@ -46,12 +48,13 @@ class Help:
             case "string": return str
             case "int": return int
             case "bool": return bool
+            case "flag": return uint #? not actually converted
             case _: error(f"Invalid type provided '{type_string}'")
         return str #? never actually reached
 
     def convert_types(self, command_name: str, args: List[Any]) -> List[Any]:
         command_args = self.get_help_details(command_name)["args"]
-        new_args = []
+        new_args: List[Any] = []
         for index, arg in enumerate(args):
             try:
                 type_string = command_args[list(command_args.keys())[index]]["type"]
@@ -71,8 +74,11 @@ class Help:
             else:
                 new_type = self.get_type(type_string)
                 try:
-                    new_args.append(new_type(arg))
-                except TypeError:
+                    if new_type == uint: #? only used for flags, so if it's present it is true
+                        new_args.append(True)
+                    else:
+                        new_args.append(new_type(arg))
+                except (TypeError, ValueError):
                     error(f"Cannot convert '{arg}' to required type '{new_type.__name__}'") #type:ignore
                 except IndexError:
                     error(f"Too few arguments provided, expected {len(command_args)} but recieved {len(args)}")
@@ -95,14 +101,14 @@ class Help:
             if arg_details["required"]:
                 display_args.append(f"<{arg_name}{f":{arg_details["type"].split(":")[-1]}" if extra_details else ""}>{"..." if arg_details["type"].startswith("multiple:") else ""}") #type:ignore
             else:
-                display_args.append(f"\\[{arg_name}{f":{arg_details["type"].split(":")[-1]}" if extra_details else ""}]{"..." if arg_details["type"].startswith("multiple:") else ""}") #type:ignore
+                display_args.append(f"\\[{arg_name}{f":{arg_details["type"].split(":")[-1]}" if (extra_details and arg_details["type"] != "flag") else ""}]{"..." if arg_details["type"].startswith("multiple:") else ""}") #type:ignore
         return display_args
 
     def get_help(self, command_name: str="") -> None:
         if command_name == "":
             for command_name, command_details in self.help_dict.items():
                 display_args = self.get_display_args(command_details["args"], extra_details=False)
-                console.print(f"[dark_cyan]{command_name} {" ".join(display_args)}{" " if len(display_args) != 0 else ""}[/dark_cyan]- {command_details["description_short"]}", highlight=False)
+                console.print(f"[light_green]{command_name} {" ".join(display_args)}{" " if len(display_args) != 0 else ""}[/light_green]- {command_details["description_short"]}", highlight=False)
         else:
             if command_name not in self.help_dict.keys():
                 if command_name not in self.aliases.keys():
@@ -113,8 +119,8 @@ class Help:
             command_details = self.get_help_details(command_name)
             display_args = self.get_display_args(command_details["args"])
             console.print(command_name)
-            console.print(f"Usage: [dark_cyan]{command_name} {" ".join(display_args)}{" " if len(display_args) != 0 else ""}[/dark_cyan]", highlight=False)
-            console.print(f"Description: {command_details["description" if "description" in command_details.keys() else "description_short"]}", highlight=False)
+            console.print(f"Usage: [light_green]{command_name} {" ".join(display_args)}{" " if len(display_args) != 0 else ""}[/light_green]", highlight=False)
+            console.print(f"Description: [pale_turquoise1]{command_details["description" if "description" in command_details.keys() else "description_short"]}[/pale_turquoise1]", highlight=False)
             if "aliases" in command_details.keys():
                 if len(command_details["aliases"]) > 0:
                     console.print(f"Aliases: {", ".join(command_details["aliases"])}")
