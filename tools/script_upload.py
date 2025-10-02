@@ -1,13 +1,12 @@
 import json
 import os
 from .common import error, format_name, console, config, join_path
-from .script_check import check_file
-from .script_format import format
+from .script_format import format_script
 
 option_yellow = config.colours["option_yellow"]
 success_green = config.colours["success_green"]
 
-def upload(script_file: str) -> None:
+def upload_script(script_file: str) -> None:
     if not os.path.exists(script_file):
         error(f"File '{script_file}' does not exist")
 
@@ -25,5 +24,5 @@ def upload(script_file: str) -> None:
         os.mkdir(new_script_directory)
     os.rename(script_file, new_script_path)
     
-    format(new_script_name)
+    format_script(new_script_name)
     

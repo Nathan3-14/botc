@@ -5,7 +5,7 @@ from .common import SCRIPTS_PATH, join_path, console, error, config
 
 success_green = config.colours["success_green"]
 
-def check_file(script_json: Dict) -> bool:
+def check_script(script_json: Dict) -> bool:
     character_check_list = list(json.load(open("old_tools/data/characters.json", "r")).keys())
     travellers_list = json.load(open("old_tools/data/travellers.json", "r"))
     fabled_list = json.load(open("old_tools/data/fabled.json", "r"))
@@ -33,5 +33,5 @@ def check(script_name: str) -> bool:
         error(f"File '{current_script_path}' does not exist")
         quit()
     
-    return check_file(script)
+    return check_script(script)
 

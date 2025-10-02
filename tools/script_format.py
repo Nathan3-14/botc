@@ -35,12 +35,12 @@ def download_script_pdf(script_path: str, driver: WebDriver):
     try:
         download_a4_pdf_button = driver.find_elements(By.CSS_SELECTOR, ".sc-ckVGcZ.hfoJqb")[5]
         download_a4_pdf_button.click()
+        time.sleep(5)
     except ElementNotInteractableException:
         error("Error loading script, please retry (notinteractable)", _quit=False)
-        driver.close()
         quit()
-    time.sleep(5)
-    driver.close()
+    finally:
+        driver.close()
     console.print(f"[{log_grey}]New Script Downloaded[/{log_grey}]")
 
 def get_meta_index(script_data: List[Dict[str, str]]) -> int:
@@ -72,7 +72,7 @@ def rename_script(script_path: str):
     os.rename(old_pdf_path, new_pdf_path)
     console.print(f"[{log_grey}]New Script Renamed[/{log_grey}]")
     
-def format(script_name: str):
+def format_script(script_name: str):
     current_script_directory = os.path.join(SCRIPTS_PATH, script_name)
     current_script_file = f"{script_name}.json"
     current_script_path = os.path.join(current_script_directory, current_script_file)

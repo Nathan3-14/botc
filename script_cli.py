@@ -8,9 +8,9 @@ import tools
 
 executor = cli.Executor(json.load(open("tools/help_dict.json", "r")), {
     "search": tools.display_search,
-    "list": tools.list_script,
-    "format": tools.format,
-    "download": tools.download,
-    "upload": tools.upload
+    "display": tools.display_script,
+    "format": tools.format_script,
+    "download": tools.download_script,
+    "upload": tools.upload_script
 })
 executor.run_from_command_line(argv[1:])

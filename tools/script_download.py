@@ -2,12 +2,11 @@ import os
 import json
 from .script_fetch_url import fetch
 from .common import error, join_path, format_name, console, config
-from .script_check import check_file
-from .script_format import format
+from .script_format import format_script
 
 success_green = config.colours["success_green"]
 
-def download(script_name: str) -> None:
+def download_script(script_name: str) -> None:
     script_name = format_name(script_name)
     new_script_directory = f"scripts/{script_name}"
     new_script_data = fetch(script_name)["content"]

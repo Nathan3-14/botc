@@ -4,7 +4,7 @@ from .common import join_path, SCRIPTS_PATH, console, error, config
 
 colours = config.character_colours
 
-def list_script(script_name: str, character_types: List[Literal["townsfolk", "outsider", "minion", "demon", "travellers", "fabled"]]=["townsfolk", "outsider", "minion", "demon", "travellers", "fabled"]) -> None:
+def display_script(script_name: str, character_types: List[Literal["townsfolk", "outsider", "minion", "demon", "travellers", "fabled"]]=["townsfolk", "outsider", "minion", "demon", "travellers", "fabled"]) -> None:
     current_script_directory = join_path(SCRIPTS_PATH, script_name)
     current_script_path = join_path(current_script_directory, f"{script_name}.json")
     try:

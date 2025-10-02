@@ -9,7 +9,7 @@
         },
         "description_short": "Searches downloaded scripts for a set of criteria"
     },
-    "list": {
+    "display": {
         "args": {
             "script_name": {
                 "type": "string",
@@ -20,7 +20,7 @@
                 "required": false
             } 
         },
-        "description_short": "Lists the characters of script that match the character types given (if provided)"
+        "description_short": "Displays a list of characters of the given script that match the character types given (if provided)"
     },
     "format": {
         "args": {
