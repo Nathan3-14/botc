@@ -1,5 +1,6 @@
 import json
 from typing import Dict
+from warnings import deprecated
 from .common import SCRIPTS_PATH, join_path, console, error, config
 
 success_green = config.colours["success_green"]

@@ -31,24 +31,11 @@
         },
         "description_short": "Creates a pdf of the given script"
     },
-    "check": {
-        "args": {
-            "script_name": {
-                "type": "string",
-                "required": true
-            }
-        },
-        "description_short": "Checks if a script is compatable with currently available character"
-    },
     "download": {
         "args": {
             "script_name": {
                 "type": "string",
                 "required": true
-            },
-            "-i": {
-                "type": "flag",
-                "required": false
             }
         },
         "description_short": "Downloads a script with the given name"
@@ -58,10 +45,6 @@
             "script_file": {
                 "type": "string",
                 "required": true
-            },
-            "-i": {
-                "type": "flag",
-                "required": false
             }
         },
         "description_short": "Uploads, checks and formats a script.json file",
