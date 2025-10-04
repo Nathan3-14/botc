@@ -1,6 +1,4 @@
 import json
-from tabnanny import check
-from typing import List
 import cli
 from sys import argv
 import tools
