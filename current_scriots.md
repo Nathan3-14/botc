@@ -1,0 +1,12 @@
+# Current Scripts
+- Trouble Brewing
+- Bad Moon Rising
+- Sects and Violets
+- Kaboom
+- The Minotaurs Labyrinth
+- Insomnia
+- No Roles Barred
+- Storyteller's Nightmare
+- Idiot Sauce
+- Please Shut the Fuck Up
+- Confused Nomination
