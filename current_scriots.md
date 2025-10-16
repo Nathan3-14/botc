@@ -10,3 +10,4 @@
 - Idiot Sauce
 - Please Shut the Fuck Up
 - Confused Nomination
+- Everyone can Play
