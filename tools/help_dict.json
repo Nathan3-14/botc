@@ -29,7 +29,8 @@
                 "required": true
             }
         },
-        "description_short": "Creates a pdf of the given script"
+        "description_short": "Creates a pdf of the given script",
+        "aliases": ["pdf"]
     },
     "download": {
         "args": {
