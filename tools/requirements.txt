@@ -1,2 +1,3 @@
 selenium
 rich
+pdf2image

@@ -50,5 +50,14 @@
         },
         "description_short": "Uploads, checks and formats a script.json file",
         "description": "Uploads, checks (only if -i flag is not present) and formats a script.json file"
+    },
+    "image": {
+        "args": {
+            "scripts_name": {
+                "type": "string",
+                "required": true
+            }
+        },
+        "description_short": "Converts a script PDF to an PNG"
     }
 }

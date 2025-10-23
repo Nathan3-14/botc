@@ -1,12 +1,13 @@
-import time
 from typing import Dict, List
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.common.exceptions import ElementNotInteractableException, NoSuchElementException
-import os
 from sys import argv
+import pdf2image
+import time
+import os
 import json
 from .common import join_path, SCRIPTS_PATH, console, error, config, format_name
 
@@ -42,6 +43,7 @@ def download_script_pdf(script_path: str, driver: WebDriver):
     finally:
         driver.close()
     console.print(f"[{log_grey}]New Script Downloaded[/{log_grey}]")
+    
 
 def get_meta_index(script_data: List[Dict[str, str]]) -> int:
     for index, item in enumerate(script_data):

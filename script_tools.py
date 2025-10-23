@@ -9,6 +9,7 @@ executor = cli.Executor(json.load(open("tools/help_dict.json", "r")), {
     "display": tools.display_script,
     "format": tools.format_script,
     "download": tools.download_script,
-    "upload": tools.upload_script
+    "upload": tools.upload_script,
+    "image": tools.image_script
 })
 executor.run_from_command_line(argv[1:])
