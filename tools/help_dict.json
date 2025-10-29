@@ -20,6 +20,7 @@
                 "required": false
             } 
         },
+        "aliases": ["list"],
         "description_short": "Displays a list of characters of the given script that match the character types given (if provided)"
     },
     "format": {
