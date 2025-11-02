@@ -1,7 +1,5 @@
 import json
 from typing import Any, Dict, List
-
-from numpy import uint
 from .common import console, error
 import jsonschema
 from rich.console import Console
