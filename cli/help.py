@@ -1,6 +1,7 @@
 import json
 from typing import Any, Dict, List
 from .common import console, error
+from .colours import log_grey
 import jsonschema
 from rich.console import Console
 console = Console()
@@ -46,7 +47,7 @@ class Help:
             case "string": return str
             case "int": return int
             case "bool": return bool
-            case "flag": return uint #? not actually converted
+            case "flag": return int #? not actually converted
             case _: error(f"Invalid type provided '{type_string}'")
         return str #? never actually reached
 
@@ -72,7 +73,7 @@ class Help:
             else:
                 new_type = self.get_type(type_string)
                 try:
-                    if new_type == uint: #? only used for flags, so if it's present it is true
+                    if new_type == int: #? only used for flags, so if it's present it is true
                         new_args.append(True)
                     else:
                         new_args.append(new_type(arg))
@@ -105,8 +106,18 @@ class Help:
     def get_help(self, command_name: str="") -> None:
         if command_name == "":
             for command_name, command_details in self.help_dict.items():
+                is_deprecated = False
+                if "deprecated" in command_details.keys():
+                    is_deprecated = command_details["deprecated"]
                 display_args = self.get_display_args(command_details["args"], extra_details=False)
-                console.print(f"[light_green]{command_name} {" ".join(display_args)}{" " if len(display_args) != 0 else ""}[/light_green]- {command_details["description_short"]}", highlight=False)
+                # console.print(f"[light_green]{command_name} {" ".join(display_args)}{" " if len(display_args) != 0 else ""}[/light_green]- {command_details["description_short"]}", highlight=False)
+                console.print("".join([
+                    f"[strike][{log_grey}]" if is_deprecated else "[light_green]",                      #? Starting, green or grey
+                    f"{command_name} {" ".join(display_args)}{" " if len(display_args) != 0 else ""}",  #? Command and its arguments followed by a space
+                    f"[/light_green]" if not is_deprecated else "",                                     #? Ends green if the command isn't deprecated
+                    f"- {command_details["description_short"]}",                                        #? Adds the short description
+                    f"[/strike] DEPRECATED[/{log_grey}]" if is_deprecated else ""                       #? Closes the grey tag if the command is deprecated
+                ]), highlight=False)
         else:
             if command_name not in self.help_dict.keys():
                 if command_name not in self.aliases.keys():

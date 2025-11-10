@@ -27,7 +27,8 @@
                 "aliases": {
                     "type": "array",
                     "items": {"type": "string"}
-                }
+                },
+                "deprecated": {"type": "boolean"}
             },
             "required": ["args", "description_short"]
         }
