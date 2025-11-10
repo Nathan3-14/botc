@@ -40,7 +40,8 @@
                 "required": true
             }
         },
-        "description_short": "Downloads a script with the given name"
+        "description_short": "Downloads a script with the given name",
+        "deprecated": true
     },
     "upload": {
         "args": {
