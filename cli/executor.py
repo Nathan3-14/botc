@@ -1,6 +1,7 @@
 from typing import Any, Callable, Dict, List
 from .help import Help
 from .common import console
+from .colours import warning_orange
 
 class Executor:
     def __init__(self, help_dict: Dict[str, Any], command_dict: Dict[str, Callable]) -> None:
@@ -8,6 +9,10 @@ class Executor:
         self.command_dict = command_dict | {"help": self.help.get_help}
     
     def run(self, command_name: str, command_args: List[str]) -> None:
+        if self.help.get_is_deprecated(command_name):
+            console.print(f"[bold {warning_orange}]Command {command_name} is deprecated. Continue (y/n)[/bold {warning_orange}] ")
+            if input().lower() not in ["y", "yes"]:
+                quit()
         self.command_dict[self.help.get_root_command(command_name)](*self.help.convert_types(command_name, command_args))
     
     def run_from_command_line(self, args: List[str]) -> None:

@@ -31,7 +31,8 @@
             }
         },
         "description_short": "Creates a pdf of the given script",
-        "aliases": ["pdf"]
+        "aliases": ["pdf"],
+        "deprecated": true
     },
     "download": {
         "args": {
@@ -40,8 +41,7 @@
                 "required": true
             }
         },
-        "description_short": "Downloads a script with the given name",
-        "deprecated": true
+        "description_short": "Downloads a script with the given name"
     },
     "upload": {
         "args": {

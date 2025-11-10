@@ -6,7 +6,6 @@ import jsonschema
 from rich.console import Console
 console = Console()
 
-    
 
 class Help:
     def __init__(self, help_dict: Dict[str, Any]) -> None:
@@ -30,7 +29,13 @@ class Help:
         self.commands = [key for key in self.help_dict.keys() if key != "$schema"]
         self.aliases: Dict[str, str] = {}
         self.get_aliases()
-
+    
+    def get_is_deprecated(self, command_name: str) -> bool:
+        command_details = self.help_dict[command_name]
+        if "deprecated" in command_details:
+            return command_details["deprecated"]
+        return False
+    
     def get_aliases(self) -> None:
         for index in range(len(self.commands)):
             command = self.commands[index]
