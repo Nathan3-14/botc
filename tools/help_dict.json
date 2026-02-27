@@ -71,6 +71,10 @@
             "count": {
                 "type": "int",
                 "required": false
+            },
+            "overlap_maximum": {
+                "type": "int",
+                "required": false
             }
         },
         "description_short": "Finds non-clashing scripts"
