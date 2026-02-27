@@ -78,8 +78,8 @@ class Help:
             else:
                 new_type = self.get_type(type_string)
                 try:
-                    if new_type == int: #? only used for flags, so if it's present it is true
-                        new_args.append(True)
+                    if new_type == int: #! NO IT'S NOT? only used for flags, so if it's present it is true
+                        new_args.append(int(arg))
                     else:
                         new_args.append(new_type(arg))
                 except (TypeError, ValueError):

@@ -11,6 +11,7 @@ class Config:
 
 config = Config(tomllib.load(open("tools/config.toml", "rb")))
 error_red = config.colours["error_red"]
+warning_orange = config.colours["warning_orange"]
 
 def format_name(script_name: str, to_underscore: bool=True) -> str:
     if to_underscore:
