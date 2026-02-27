@@ -61,5 +61,18 @@
             }
         },
         "description_short": "Converts a script PDF to an PNG"
+    },
+    "select": {
+        "args": {
+            "starting_script": {
+                "type": "string",
+                "required": true
+            },
+            "count": {
+                "type": "integer",
+                "required": false
+            }
+        },
+        "description_short": "Finds non-clashing scripts"
     }
 }

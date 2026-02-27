@@ -1,22 +1,19 @@
 import json
-from typing import Dict
+from typing import Dict, List
 from warnings import deprecated
-from .common import SCRIPTS_PATH, join_path, console, error, config
+from .common import SCRIPTS_PATH, get_character_list, join_path, console, error, config
 
 success_green = config.colours["success_green"]
 
-def check_script(script_json: Dict) -> bool:
-    character_check_list = list(json.load(open("old_tools/data/characters.json", "r")).keys())
-    travellers_list = json.load(open("old_tools/data/travellers.json", "r"))
-    fabled_list = json.load(open("old_tools/data/fabled.json", "r"))
+def check_script(script_json: List[str|Dict[str,str]]) -> bool:
+    character_check_list = list(json.load(open("tools/data/characters.json", "r")).keys())
+    travellers_list = json.load(open("tools/data/travellers.json", "r"))
+    fabled_list = json.load(open("tools/data/fabled.json", "r"))
     
     valid = True
-    for character in script_json:
-        id = character if type(character) == str else character["id"]
-        if id == "_meta":
-            continue
-        if id not in character_check_list and id not in travellers_list and id not in fabled_list:
-            error(f"Script is invalid, character '{id}' cannot be used", _quit=False)
+    for character in get_character_list(script_json, True, True):
+        if character not in character_check_list and character not in travellers_list and character not in fabled_list:
+            error(f"Script is invalid, character '{character}' cannot be used", _quit=False)
             valid = False
     
     if valid:

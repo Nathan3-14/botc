@@ -1,7 +1,7 @@
 import json
 import os
 from typing import Dict, List
-from .common import SCRIPTS_PATH, join_path, console
+from .common import SCRIPTS_PATH, get_character_list, join_path, console, load_script
 
 def display_search(criteria: List[str]) -> None:
     includes = [item for item in criteria if not item.startswith("!")]
@@ -11,13 +11,9 @@ def display_search(criteria: List[str]) -> None:
 def search(includes: List[str]=[], excludes: List[str]=[]) -> List[str]:
     valid_script_folders = []
     for script_folder in os.listdir(SCRIPTS_PATH):
-        raw_data: List[Dict[str, str]] = json.load(open(join_path(SCRIPTS_PATH, script_folder, f"{script_folder}.json"), "r"))
-        for item in raw_data:
-            if type(item) == str:
-                character_ids = [item for item in raw_data if type(item) != dict]
-                break
-        else:
-            character_ids = [item["id"] for item in raw_data if item["id"] != "_meta"] #type:ignore
+        raw_data = load_script(script_folder)
+        # raw_data: List[str|Dict[str, str]] = json.load(open(join_path(SCRIPTS_PATH, script_folder, f"{script_folder}.json"), "r"))
+        character_ids = get_character_list(raw_data, True, True)
             
         is_invalid = False
         
