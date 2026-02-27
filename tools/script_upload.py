@@ -24,5 +24,3 @@ def upload_script(script_file: str) -> None:
         os.mkdir(new_script_directory)
     os.rename(script_file, new_script_path)
     
-    format_script(new_script_name)
-    

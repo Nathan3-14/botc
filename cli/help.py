@@ -22,6 +22,7 @@ class Help:
                     }
                 },
                 "description_short": "Gets help",
+                "description": "Displays information about all / a given command. Args are formatted as <required:type> or [optional:type]"
             }
         }
         if "$schema" in self.help_dict.keys():

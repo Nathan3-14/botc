@@ -50,8 +50,7 @@
                 "required": true
             }
         },
-        "description_short": "Uploads, checks and formats a script.json file",
-        "description": "Uploads, checks (only if -i flag is not present) and formats a script.json file"
+        "description_short": "Uploads a script.json file"
     },
     "image": {
         "args": {
@@ -77,6 +76,7 @@
                 "required": false
             }
         },
-        "description_short": "Finds non-clashing scripts"
+        "description_short": "Finds non-clashing scripts",
+        "description": "Checks all sets of scripts to find sets of given length with a maximum amount of overlapping characters"
     }
 }
