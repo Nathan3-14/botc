@@ -78,5 +78,20 @@
         },
         "description_short": "Finds non-clashing scripts",
         "description": "Checks all sets of scripts to find sets of given length with a maximum amount of overlapping characters"
+    },
+    "sets": {
+        "args": {
+            "count": {
+                "type": "int",
+                "required": false
+            },
+            "overlap_maximum": {
+                "type": "int",
+                "required": false
+            }
+        },
+        "description_short": "Finds packs of non-clashing scripts",
+        "description": "Check all possible sets of scripts to find sets of given length with a maximum amount of overlapping characters",
+        "aliases": ["packs"]
     }
 }
