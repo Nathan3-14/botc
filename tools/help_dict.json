@@ -41,7 +41,8 @@
                 "required": true
             }
         },
-        "description_short": "Downloads a script with the given name"
+        "description_short": "Downloads a script with the given name",
+        "description": "Searches for then downloads a script with the given name, if it already exists, the option to replace it is presented"
     },
     "upload": {
         "args": {
