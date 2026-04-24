@@ -11,8 +11,6 @@ def has_overlaps(list_1: List[Any], list_2: List[Any], overlap_max: int=0, start
         return True, overlaps
     return False, overlaps
 
-# def select_script_route(current_script_sets: List[List[str]], current_characters: List[str], count: int) -> List[str]:
-#     return ["!!TESTING!!"]
 
 def find_scripts(current_scripts: List[str], current_characters: List[str], count: int, overlap_max: int, current_overlaps: int) -> List[List[str]]:
     if len(current_scripts) >= count:
@@ -52,15 +50,15 @@ colours = [
 ]
 
 def select_scripts(initial_script_path: str, count: int=3, overlap_maximum: int=0) -> None:
-    if initial_script_path == ".":
-        script_sets = find_scripts([], [], count, overlap_maximum, 0)
-    else:
-        current_characters = get_character_list(load_script(initial_script_path))
-        script_sets = find_scripts([initial_script_path], current_characters, count, overlap_maximum, 0)
+    current_characters = get_character_list(load_script(initial_script_path))
+    script_sets = find_scripts([initial_script_path], current_characters, count, overlap_maximum, 0)
+
     if len(script_sets) == 0:
         console.print(f"[{warning_orange}]No Script Sets of {count} found containing {initial_script_path}[/{warning_orange}]")
         return
     print(f"Script Sets of {count} that contain {initial_script_path if initial_script_path != "." else "any scripts"} with a maximum number of {overlap_maximum} overlaping characters are:")
+
+    #* Display Scripts in a Cool Manner *#
     selected_colours = {}
     for script_set in script_sets:
         line = "    "
