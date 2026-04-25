@@ -1,4 +1,5 @@
 import os
+import json
 from typing import Any, List, Set, Tuple, FrozenSet
 from .common import SCRIPTS_PATH, get_character_list, load_script, console, warning_orange
 
@@ -67,6 +68,4 @@ def get_script_sets(count: int=3, overlap_maximum: int=0, export: bool=False) ->
         console.print(line)
     
     if export:
-        with open(f"script_sets.txt", "w") as f:
-            for script_set in script_sets:
-                f.write(", ".join(script_set) + "\n")
+        json.dump([", ".join(script_set) for script_set in script_sets], open("EXPORT_script_sets.json", "w"), indent=4)
