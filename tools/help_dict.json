@@ -89,6 +89,10 @@
             "overlap_maximum": {
                 "type": "int",
                 "required": false
+            },
+            "export": {
+                "type": "bool",
+                "required": false
             }
         },
         "description_short": "Finds packs of non-clashing scripts",

@@ -48,7 +48,7 @@ colours = [
     "#4fc3f7"
 ]
 
-def get_script_sets(count: int=3, overlap_maximum: int=0) -> None:
+def get_script_sets(count: int=3, overlap_maximum: int=0, export: bool=False) -> None:
     script_sets = find_script_sets([], [], count, overlap_maximum, 0)
 
     if len(script_sets) == 0:
@@ -65,3 +65,8 @@ def get_script_sets(count: int=3, overlap_maximum: int=0) -> None:
                 selected_colours[script_name] = colours[len(selected_colours.keys())%len(colours)]
             line += f"[{selected_colours[script_name]}]{script_name}[/{selected_colours[script_name]}] "
         console.print(line)
+    
+    if export:
+        with open(f"script_sets.txt", "w") as f:
+            for script_set in script_sets:
+                f.write(", ".join(script_set) + "\n")
